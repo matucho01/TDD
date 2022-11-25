@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -25,11 +26,15 @@ public class ReporteTurnoTest {
         assertEquals(expected, actual, 0.05);
     }
 
-    /*@Test
+    @Test
     public void given_a_list_of_sales_when_insertion_then_ok() {
         ReporteTurno reporteTurno = new ReporteTurno();
-        ArrayList<Float> expected = ;
-        ArrayList<Float> actual = ;
-    }*/
+        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(253.95, 2147.82, 145.57, 3.50));
+        ArrayList<Integer> billetes = new ArrayList<>(Arrays.asList(0, 0, 65, 32, 17, 0));
+        ArrayList<Integer> monedas = new ArrayList<>(Arrays.asList(205, 269, 325, 110, 200, 107));
+        ArrayList<Double> actual = reporteTurno.ingresarVentas(458868.76, 459122.71,
+                                                                billetes, monedas, 145.57, 1);
+        assertEquals(expected, actual);
+    }
 
 }
