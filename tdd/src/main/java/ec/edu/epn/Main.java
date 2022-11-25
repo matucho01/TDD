@@ -1,4 +1,4 @@
-package epn.ec.edu;
+package ec.edu.epn;
 
 public class Main {
     public static void main(String[] args) {
