@@ -12,14 +12,19 @@ public class ReporteTurno {
         return uno*1 + cincuenta*0.5 + veinticinco*0.25 + diez*0.1 + cinco*0.05 + centavo*0.01;
     }
 
-    public ArrayList<Double> ingresarVentas(double lecturaAnterior, double lecturaActual, ArrayList<Integer> billetes,
+    public ArrayList<Double> ingresarVentas(ArrayList<Double> lecturas, ArrayList<Integer> billetes,
                                             ArrayList<Integer> monedas, double tarjetas, int numLubricantes) {
-        double ventaEnGalonesExtra = lecturaActual - lecturaAnterior;
-        double totalGalones = Math.round(ventaEnGalonesExtra*100.0)/100.0;
+        double ventaEnGalonesSuper = lecturas.get(1) - lecturas.get(0);
+        double ventaEnGalonesExtra = lecturas.get(3) - lecturas.get(2);
+        double ventaEnGalonesDiesel = lecturas.get(5) - lecturas.get(4);
+        double totalGalonesSuper = Math.round(ventaEnGalonesSuper*100.0)/100.0;
+        double totalGalonesExtra = Math.round(ventaEnGalonesExtra*100.0)/100.0;
+        double totalGalonesDiesel = Math.round(ventaEnGalonesDiesel*100.0)/100.0;
         double totalEfectivo = calcularEfectivo(billetes.get(0),billetes.get(1),billetes.get(2), billetes.get(3),
                 billetes.get(4), billetes.get(5)) + calcularMonedas(monedas.get(0), monedas.get(1), monedas.get(2),
                 monedas.get(3), monedas.get(4), monedas.get(5));
         double totalLubricantes = numLubricantes*3.50;
-        return new ArrayList<>(Arrays.asList(totalGalones, totalEfectivo, tarjetas, totalLubricantes));
+        return new ArrayList<>(Arrays.asList(totalGalonesSuper, totalGalonesExtra, totalGalonesDiesel, totalEfectivo,
+                                tarjetas, totalLubricantes));
     }
 }

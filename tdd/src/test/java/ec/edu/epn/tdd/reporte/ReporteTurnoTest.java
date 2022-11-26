@@ -29,11 +29,12 @@ public class ReporteTurnoTest {
     @Test
     public void given_a_list_of_sales_when_insertion_then_ok() {
         ReporteTurno reporteTurno = new ReporteTurno();
-        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(253.95, 2147.82, 145.57, 3.50));
+        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(67.01, 253.95, 613.00, 2147.82, 145.57, 3.50));
+        ArrayList<Double> galones = new ArrayList<>(Arrays.asList(286971.58, 287038.59, 458868.76, 459122.71, 886154.00,
+                886767.00));
         ArrayList<Integer> billetes = new ArrayList<>(Arrays.asList(0, 0, 65, 32, 17, 0));
         ArrayList<Integer> monedas = new ArrayList<>(Arrays.asList(205, 269, 325, 110, 200, 107));
-        ArrayList<Double> actual = reporteTurno.ingresarVentas(458868.76, 459122.71,
-                                                                billetes, monedas, 145.57, 1);
+        ArrayList<Double> actual = reporteTurno.ingresarVentas(galones, billetes, monedas, 145.57, 1);
         assertEquals(expected, actual);
     }
 
