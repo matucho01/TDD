@@ -41,7 +41,6 @@ public class ReporteTurno {
 
     public double calcularDiferencia(double totalGalonesSuper, double totalGalonesExtra, double totalGalonesDiesel,
                                      double totalEfectivo, double totalTarjetas) {
-
-
+        return 0.0;
     }
 }
