@@ -38,4 +38,20 @@ public class ReporteTurnoTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void given_a_list_of_gallons_when_conversion_to_money_then_ok() {
+        ReporteTurno reporteTurno = new ReporteTurno();
+        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(286.13, 609.48, 1103.4));
+        ArrayList<Double> actual = reporteTurno.calcularVentas(67.01, 253.95, 613.00);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void given_a_list_of_sales_when_comparing_then_ok() {
+        ReporteTurno reporteTurno = new ReporteTurno();
+        double expected = 2293.39;
+        double actual = reporteTurno.calcularDiferencia(67.01, 253.95, 613.00, 2147.82, 145.57);
+        assertEquals(expected, actual);
+    }
+
 }

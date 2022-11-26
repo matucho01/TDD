@@ -4,17 +4,10 @@ import java.util.ArrayList;
 
 public class Turno {
     private String turno;
+    private String fecha;
     private ArrayList<Double> ventasTurno;
     private String nombreEmpleado;
     private String cedulaEmpleado;
-
-    public Turno(String turno, String nombreEmpleado, String cedulaEmpleado) {
-        this.turno = turno;
-        this.nombreEmpleado = nombreEmpleado;
-        if(esValida(cedulaEmpleado)) {
-            this.cedulaEmpleado = cedulaEmpleado;
-        }
-    }
 
     public boolean esValida(String cedula) {
         boolean cedulaCorrecta = false;
