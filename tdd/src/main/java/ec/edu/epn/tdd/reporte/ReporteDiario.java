@@ -17,18 +17,21 @@ public class ReporteDiario {
         return totalVenta;
     }
 
-    public boolean generarArchivo(ArrayList<Double> ventasTotales) {
+    public boolean generarArchivo(ArrayList<Double> ventasTotales, String fecha) {
         try {
             String nombreArchivo = "VentasDiarias"+".txt";
             File archivo = new File(nombreArchivo);
             if(archivo.createNewFile()) {
                 System.out.println("Archivo creado exitosamente");
                 FileWriter fw = new FileWriter(nombreArchivo);
-                String pedido = "El pedido es para " + (numDias - 2) + " días: " +
-                        "\nSuper: " + this.galonesSuper + "00" +
-                        "\nExtra: " + this.galonesExtra + "00" +
-                        "\nDiesel: " + this.galonesDiesel + "00" +
-                        "\nRevisado por: Gerente";
+                String pedido = "Reporte Diario" +
+                        "\nFecha: " + fecha +
+                        "\nDespacho Super: " + ventasTotales.get(0) +
+                        "\nDespacho Extra: " + ventasTotales.get(1) +
+                        "\nDespacho Diesel: " + ventasTotales.get(2) +
+                        "\nEfectivo: " + ventasTotales.get(3) +
+                        "\nTarjetas: " + ventasTotales.get(4) +
+                        "\nVenta Lubricantes: " + ventasTotales.get(5);
                 fw.write(pedido);
                 fw.close();
                 return true;

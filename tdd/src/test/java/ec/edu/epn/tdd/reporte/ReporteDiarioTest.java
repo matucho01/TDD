@@ -25,7 +25,7 @@ public class ReporteDiarioTest {
     public void given_a_list_when_creation_of_archive_then_ok(){
         ReporteDiario reporteDiario = new ReporteDiario();
         ArrayList<Double> ventasTotales = new ArrayList<>(Arrays.asList(15.62, 922.72, 823.88, 2288.08, 265.37, 10.50));
-        boolean actual = reporteDiario.generarArchivo(ventasTotales);
+        boolean actual = reporteDiario.generarArchivo(ventasTotales, "2022-11-22");
         assertTrue(actual);
     }
 }
