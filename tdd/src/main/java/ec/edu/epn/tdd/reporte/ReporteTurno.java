@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ReporteTurno {
+
+    private String nombreEmpleado;
+    private String turno;
+
     public int calcularEfectivo(int cien, int cincuenta, int veinte, int diez, int cinco, int uno) {
         return cien*100 + cincuenta*50 + veinte*20 + diez*10 + cinco*5 + uno*1;
     }
