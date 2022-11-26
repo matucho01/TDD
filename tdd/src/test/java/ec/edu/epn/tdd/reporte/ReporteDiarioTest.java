@@ -13,8 +13,11 @@ public class ReporteDiarioTest {
     @Test
     public void given_three_objects_when_addition_then_ok() {
         ReporteDiario reporteDiario = new ReporteDiario();
-        ArrayList<Double> turnoManiana = new ArrayList<>();
-        ArrayList<Double> turnoTarde = new ArrayList<>();
-        ArrayList<Double> turnoNoche = new ArrayList<>();
+        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(15.62, 922.72, 823.88, 2288.08, 265.37, 10.50));
+        ArrayList<Double> turnoManiana = new ArrayList<>(Arrays.asList(15.62, 319.32, 149.00, 983.45, 110.68, 7.0));
+        ArrayList<Double> turnoTarde = new ArrayList<>(Arrays.asList(0.0, 507.24, 613.0, 1002.13, 118.12, 3.50));
+        ArrayList<Double> turnoNoche = new ArrayList<>(Arrays.asList(0.0, 96.16, 61.88, 302.50, 36.57, 0.0));
+        ArrayList<Double> actual = reporteDiario.totalVentaDiaria(turnoManiana, turnoTarde, turnoNoche);
+        assertEquals(expected, actual);
     }
 }
