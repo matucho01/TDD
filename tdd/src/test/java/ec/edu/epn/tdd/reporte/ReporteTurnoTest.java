@@ -49,8 +49,8 @@ public class ReporteTurnoTest {
     @Test
     public void given_a_list_of_sales_when_comparing_then_ok() {
         ReporteTurno reporteTurno = new ReporteTurno();
-        double expected = 2293.39;
-        double actual = reporteTurno.calcularDiferencia(67.01, 253.95, 613.00, 2147.82, 145.57);
+        double expected = 4.69;
+        double actual = reporteTurno.calcularDiferencia(67.01, 253.95, 613.00, 1834.67, 159.65);
         assertEquals(expected, actual, 0.05);
     }
 

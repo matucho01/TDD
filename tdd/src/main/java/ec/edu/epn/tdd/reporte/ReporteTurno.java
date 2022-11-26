@@ -37,11 +37,13 @@ public class ReporteTurno {
         double totalSuper = Math.round((galonesSuper*4.27)*100.0)/100.0;
         double totalExtra = Math.round((galonesExtra*2.40)*100.0)/100.0;
         double totalDiesel = Math.round((galonesDiesel*1.80)*100.0)/100.0;
-        return totalSuper + totalExtra + totalDiesel;
+        return Math.round((totalSuper+totalExtra+totalDiesel)*100.0)/100.0;
     }
 
     public double calcularDiferencia(double totalGalonesSuper, double totalGalonesExtra, double totalGalonesDiesel,
                                      double totalEfectivo, double totalTarjetas) {
-        return 0.0;
+        double totalVentas = calcularVentas(totalGalonesSuper, totalGalonesExtra, totalGalonesDiesel);
+        double diferencia = totalVentas - (totalEfectivo + totalTarjetas);
+        return Math.round(diferencia*100.0)/100.0;
     }
 }
