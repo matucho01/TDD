@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class ReporteDiarioTest {
 
     @Test
-    public void given_three_objects_when_addition_then_ok() {
+    public void given_three_lists_when_addition_then_ok() {
         ReporteDiario reporteDiario = new ReporteDiario();
         ArrayList<Double> expected = new ArrayList<>(Arrays.asList(15.62, 922.72, 823.88, 2288.08, 265.37, 10.50));
         ArrayList<Double> turnoManiana = new ArrayList<>(Arrays.asList(15.62, 319.32, 149.00, 983.45, 110.68, 7.0));
@@ -19,5 +19,13 @@ public class ReporteDiarioTest {
         ArrayList<Double> turnoNoche = new ArrayList<>(Arrays.asList(0.0, 96.16, 61.88, 302.50, 36.57, 0.0));
         ArrayList<Double> actual = reporteDiario.totalVentaDiaria(turnoManiana, turnoTarde, turnoNoche);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void given_a_list_when_creation_of_archive_then_ok(){
+        ReporteDiario reporteDiario = new ReporteDiario();
+        ArrayList<Double> ventasTotales = new ArrayList<>(Arrays.asList(15.62, 922.72, 823.88, 2288.08, 265.37, 10.50));
+        boolean actual = reporteDiario.generarArchivo(ventasTotales);
+        assertTrue(actual);
     }
 }
