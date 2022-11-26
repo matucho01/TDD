@@ -41,9 +41,9 @@ public class ReporteTurnoTest {
     @Test
     public void given_a_list_of_gallons_when_conversion_to_money_then_ok() {
         ReporteTurno reporteTurno = new ReporteTurno();
-        ArrayList<Double> expected = new ArrayList<>(Arrays.asList(286.13, 609.48, 1103.4));
-        ArrayList<Double> actual = reporteTurno.calcularVentas(67.01, 253.95, 613.00);
-        assertEquals(expected, actual);
+        double expected = (286.13 + 609.48 + 1103.4);
+        double actual = reporteTurno.calcularVentas(67.01, 253.95, 613.00);
+        assertEquals(expected, actual, 0.05);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ReporteTurnoTest {
         ReporteTurno reporteTurno = new ReporteTurno();
         double expected = 2293.39;
         double actual = reporteTurno.calcularDiferencia(67.01, 253.95, 613.00, 2147.82, 145.57);
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, 0.05);
     }
 
 }
