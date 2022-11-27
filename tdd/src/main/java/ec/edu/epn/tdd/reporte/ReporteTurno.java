@@ -15,7 +15,6 @@ public class ReporteTurno {
     }
 
     private double formatearValores(double valor) {
-        System.out.println("Bralan");
         return Math.round(valor*100.0)/100.0;
     }
 
