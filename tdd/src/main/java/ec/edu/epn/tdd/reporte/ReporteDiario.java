@@ -19,7 +19,7 @@ public class ReporteDiario {
 
     public boolean generarArchivo(ArrayList<Double> ventasTotales, String fecha) {
         try {
-            String nombreArchivo = "VentasDiarias"+".txt";
+            String nombreArchivo = "Ventas " + fecha + ".txt";
             File archivo = new File(nombreArchivo);
             if(archivo.createNewFile()) {
                 System.out.println("Archivo creado exitosamente");

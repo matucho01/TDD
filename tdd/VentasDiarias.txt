@@ -1,8 +1,0 @@
-Reporte Diario
-Fecha: 2022-11-22
-Despacho Super: 15.62
-Despacho Extra: 922.72
-Despacho Diesel: 823.88
-Efectivo: 2288.08
-Tarjetas: 265.37
-Venta Lubricantes: 10.5

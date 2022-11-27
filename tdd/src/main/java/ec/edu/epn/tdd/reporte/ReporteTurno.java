@@ -6,9 +6,6 @@ import java.util.Arrays;
 
 public class ReporteTurno {
 
-    private String nombreEmpleado;
-    private String turno;
-
     public int calcularEfectivo(int cien, int cincuenta, int veinte, int diez, int cinco, int uno) {
         return cien*100 + cincuenta*50 + veinte*20 + diez*10 + cinco*5 + uno*1;
     }
@@ -17,14 +14,15 @@ public class ReporteTurno {
         return uno*1 + cincuenta*0.5 + veinticinco*0.25 + diez*0.1 + cinco*0.05 + centavo*0.01;
     }
 
+    private double formatearValores(double valor) {
+        return Math.round(valor*100.0)/100.0;
+    }
+
     public ArrayList<Double> ingresarVentas(ArrayList<Double> lecturas, ArrayList<Integer> billetes,
                                             ArrayList<Integer> monedas, double tarjetas, int numLubricantes) {
-        double ventaEnGalonesSuper = lecturas.get(1) - lecturas.get(0);
-        double ventaEnGalonesExtra = lecturas.get(3) - lecturas.get(2);
-        double ventaEnGalonesDiesel = lecturas.get(5) - lecturas.get(4);
-        double totalGalonesSuper = Math.round(ventaEnGalonesSuper*100.0)/100.0;
-        double totalGalonesExtra = Math.round(ventaEnGalonesExtra*100.0)/100.0;
-        double totalGalonesDiesel = Math.round(ventaEnGalonesDiesel*100.0)/100.0;
+        double totalGalonesSuper = formatearValores(lecturas.get(1) - lecturas.get(0));
+        double totalGalonesExtra = formatearValores(lecturas.get(3) - lecturas.get(2));
+        double totalGalonesDiesel = formatearValores(lecturas.get(5) - lecturas.get(4));
         double totalEfectivo = calcularEfectivo(billetes.get(0),billetes.get(1),billetes.get(2), billetes.get(3),
                 billetes.get(4), billetes.get(5)) + calcularMonedas(monedas.get(0), monedas.get(1), monedas.get(2),
                 monedas.get(3), monedas.get(4), monedas.get(5));
@@ -34,25 +32,21 @@ public class ReporteTurno {
     }
 
     public double calcularVentas(double galonesSuper, double galonesExtra, double galonesDiesel) {
-        double totalSuper = Math.round((galonesSuper*4.27)*100.0)/100.0;
-        double totalExtra = Math.round((galonesExtra*2.40)*100.0)/100.0;
-        double totalDiesel = Math.round((galonesDiesel*1.80)*100.0)/100.0;
-        return Math.round((totalSuper+totalExtra+totalDiesel)*100.0)/100.0;
+        double totalSuper = formatearValores(galonesSuper);
+        double totalExtra = formatearValores(galonesExtra);
+        double totalDiesel = formatearValores(galonesDiesel);
+        return formatearValores(totalSuper+totalExtra+totalDiesel);
     }
 
     public double calcularDiferencia(double totalGalonesSuper, double totalGalonesExtra, double totalGalonesDiesel,
                                      double totalEfectivo, double totalTarjetas) {
         double totalVentas = calcularVentas(totalGalonesSuper, totalGalonesExtra, totalGalonesDiesel);
         double diferencia = totalVentas - (totalEfectivo + totalTarjetas);
-        return Math.round(diferencia*100.0)/100.0;
+        return formatearValores(diferencia);
     }
 
     public boolean sobranteFaltante(double totalVentasLecturas, double totalEntregas) {
         double diferencia = totalVentasLecturas - totalEntregas;
-        if(diferencia < 15 && diferencia > -15) {
-           return true;
-        } else {
-            return false;
-        }
+        return (diferencia < 15 && diferencia > -15);
     }
 }
