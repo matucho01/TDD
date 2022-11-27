@@ -1,6 +1,7 @@
 package ec.edu.epn.tdd.reporte;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -52,6 +53,22 @@ public class ReporteTurnoTest {
         double expected = 4.69;
         double actual = reporteTurno.calcularDiferencia(67.01, 253.95, 613.00, 1834.67, 159.65);
         assertEquals(expected, actual, 0.05);
+    }
+
+    @Test
+    public void given_a_query_when_pricing_then_ok() {
+        IReporteTurno r = Mockito.mock(IReporteTurno.class);
+        ArrayList<Double> precios = new ArrayList<>(Arrays.asList(4.20, 2.40, 1.75));
+        Mockito.when(r.obtenerPreciosActualizados()).thenReturn(precios);
+        assertEquals(new ArrayList<>(Arrays.asList(4.20, 2.40, 1.75)), precios);
+    }
+
+    @Test
+    public void given_a_query_when_readings_then_ok() {
+        IReporteTurno r = Mockito.mock(IReporteTurno.class);
+        ArrayList<Double> lecturas = new ArrayList<>(Arrays.asList(458868.762, 286971.576, 886154.00));
+        Mockito.when(r.obtenerLecturasSurtidor()).thenReturn(lecturas);
+        assertEquals(new ArrayList<>(Arrays.asList(458868.762, 286971.576, 886154.00)), lecturas);
     }
 
 }

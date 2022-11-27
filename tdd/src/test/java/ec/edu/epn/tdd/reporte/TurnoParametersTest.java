@@ -35,7 +35,7 @@ public class TurnoParametersTest {
     public void given_parameters_when_comparing_then_ok() {
         Turno turno = new Turno();
         boolean actual = turno.esValida(cedula);
-        assertSame(actual, expected);
+        assertEquals(actual, expected);
     }
 
 }

@@ -36,7 +36,7 @@ public class ReporteTurnoParametersTest {
     public void given_parameters_when_comparing_then_ok() {
         ReporteTurno reporteTurno = new ReporteTurno();
         boolean actual = reporteTurno.sobranteFaltante(totalVentasLecturas, totalEntregas);
-        assertSame(actual, expected);
+        assertEquals(actual, expected);
     }
 
 }
