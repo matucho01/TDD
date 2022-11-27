@@ -2,6 +2,7 @@ package ec.edu.epn.tdd.reporte;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +22,8 @@ public class ReporteDiarioTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void given_a_list_when_creation_of_archive_then_ok(){
+    @Test(expected = IOException.class)
+    public void given_a_list_when_creation_of_archive_then_exception(){
         ReporteDiario reporteDiario = new ReporteDiario();
         ArrayList<Double> ventasTotales = new ArrayList<>(Arrays.asList(15.62, 922.72, 823.88, 2288.08, 265.37, 10.50));
         boolean actual = reporteDiario.generarArchivo(ventasTotales, "2022-11-25");

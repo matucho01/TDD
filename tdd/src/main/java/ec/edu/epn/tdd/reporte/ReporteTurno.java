@@ -46,4 +46,14 @@ public class ReporteTurno {
         double diferencia = totalVentas - (totalEfectivo + totalTarjetas);
         return Math.round(diferencia*100.0)/100.0;
     }
+
+    public boolean sobranteFaltante(double totalVentasLecturas, double totalEntregas) {
+        double diferencia = totalVentasLecturas - totalEntregas;
+        /*if(diferencia < 15 && diferencia > -15) {
+           return true;
+        } else {
+            return false;
+        }*/
+        return (diferencia < 15 && diferencia > -15);
+    }
 }

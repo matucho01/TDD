@@ -9,28 +9,42 @@ public class Turno {
     private String nombreEmpleado;
     private String cedulaEmpleado;
 
-    public static boolean esValida(String ci) {
-        if(ci.length()!=10){
-            return false;
-        }
-        int comprobador = Integer.parseInt("" + ci.charAt(9));
-        int impares = 0;
-        int pares = 0;
-        int aux;
-        for (int i = 0; i < 9; i += 2) {
-            aux = Integer.parseInt("" + ci.charAt(i));
-            aux *= 2;
-            if (aux > 9) {
-                aux -= 9;
+    public boolean esValida(String cedula) {
+        boolean cedulaCorrecta = false;
+        try {
+            if (cedula.length() == 10) // ConstantesApp.LongitudCedula
+            {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                    // Coeficientes de validación cédula
+                    // El decimo digito se lo considera dígito verificador
+                    int[] coefValCedula = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
+                    int verificador = Integer.parseInt(cedula.substring(9,10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1))* coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    }
+                    else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
             }
-            impares += aux;
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            cedulaCorrecta = false;
         }
-        for (int i = 1; i < 9; i += 2) {
-            aux = Integer.parseInt("" + ci.charAt(i));
-            pares += aux;
-        }
-        aux = pares + impares;
-        aux = (int)(Math.round((double) aux / 10) * 10) - aux;
-        return aux == comprobador;
+        return cedulaCorrecta;
     }
 }
